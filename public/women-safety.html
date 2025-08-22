@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Safety Helplines - Smartband+</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .helpline-content {
+            padding: 30px;
+            background: #f5f7fa;
+            min-height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+        
+        .helpline-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .helpline-header h1 {
+            color: #d81b60;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .helpline-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .helplines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .helpline-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .helpline-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .helpline-info {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+        
+        .helpline-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .police { background: #3498db; }
+        .women { background: #e91e63; }
+        .emergency { background: #f44336; }
+        .transport { background: #ff9800; }
+        .cyber { background: #9c27b0; }
+        
+        .helpline-details h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .helpline-details p {
+            margin: 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .call-button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        
+        .call-button:hover {
+            background: #219a52;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-section">
+                    <div class="heart-icon">♥</div>
+                    <span class="brand-name">Smartband+</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-house"></i></span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="analytics.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-chart-line"></i></span>
+                    <span class="nav-text">Analytics</span>
+                </a>
+                <a href="thingspeak.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-cloud"></i></span>
+                    <span class="nav-text">ThingSpeak</span>
+                </a>
+                <a href="find-my-band.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-magnifying-glass-location"></i></span>
+                    <span class="nav-text">Find My Band</span>
+                </a>
+                <a href="sos.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-exclamation-triangle"></i></span>
+                    <span class="nav-text">SOS</span>
+                </a>
+                <a href="women-safety.html" class="nav-item active">
+                    <span class="nav-icon"><i class="fa-solid fa-user-shield"></i></span>
+                    <span class="nav-text">Women Safety</span>
+                </a>
+                <a href="women-health.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-user-doctor"></i></span>
+                    <span class="nav-text">Women Health</span>
+                </a>
+                <a href="crime-map.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-map-location-dot"></i></span>
+                    <span class="nav-text">Crime Map</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>Women Safety Helplines</h1>
+                <div class="header-actions">
+                    <button class="notification-btn"><i class="fa-solid fa-bell"></i></button>
+                    <button class="profile-btn" onclick="window.location.href='profile.html'"><i class="fas fa-user"></i></button>
+                    <button class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </div>
+            </header>
+
+            <div class="helpline-content">
+                <div class="helpline-header">
+                    <h1>🚨 Emergency Helplines</h1>
+                    <p>Important numbers for women's safety & protection</p>
+                </div>
+
+                <div class="helplines-grid">
+                    <div class="helpline-card">
+                        <div class="helpline-info">
+                            <div class="helpline-icon police">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div class="helpline-details">
+                                <h3>100</h3>
+                                <p>Police Emergency</p>
+                            </div>
+                        </div>
+                        <a href="tel:100" class="call-button">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+
+                    <div class="helpline-card">
+                        <div class="helpline-info">
+                            <div class="helpline-icon women">
+                                <i class="fa-solid fa-person-dress"></i>
+                            </div>
+                            <div class="helpline-details">
+                                <h3>1091</h3>
+                                <p>Women Helpline</p>
+                            </div>
+                        </div>
+                        <a href="tel:1091" class="call-button">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+
+                    <div class="helpline-card">
+                        <div class="helpline-info">
+                            <div class="helpline-icon emergency">
+                                <i class="fa-solid fa-house-crack"></i>
+                            </div>
+                            <div class="helpline-details">
+                                <h3>181</h3>
+                                <p>Women Helpline (Domestic Violence)</p>
+                            </div>
+                        </div>
+                        <a href="tel:181" class="call-button">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+
+                    <div class="helpline-card">
+                        <div class="helpline-info">
+                            <div class="helpline-icon women">
+                                <i class="fa-solid fa-hand-fist"></i>
+                            </div>
+                            <div class="helpline-details">
+                                <h3>1090</h3>
+                                <p>Women Powerline (Harassment)</p>
+                            </div>
+                        </div>
+                        <a href="tel:1090" class="call-button">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+
+                    <div class="helpline-card">
+                        <div class="helpline-info">
+                            <div class="helpline-icon transport">
+                                <i class="fa-solid fa-car-crash"></i>
+                            </div>
+                            <div class="helpline-details">
+                                <h3>1073</h3>
+                                <p>Road Accident / Highway Helpline</p>
+                            </div>
+                        </div>
+                        <a href="tel:1073" class="call-button">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+
+                    <div class="helpline-card">
+                        <div class="helpline-info">
+                            <div class="helpline-icon transport">
+                                <i class="fa-solid fa-train"></i>
+                            </div>
+                            <div class="helpline-details">
+                                <h3>182</h3>
+                                <p>Railway Protection Force (RPF)</p>
+                            </div>
+                        </div>
+                        <a href="tel:182" class="call-button">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+
+                    <div class="helpline-card">
+                        <div class="helpline-info">
+                            <div class="helpline-icon transport">
+                                <i class="fa-solid fa-train-subway"></i>
+                            </div>
+                            <div class="helpline-details">
+                                <h3>1092</h3>
+                                <p>Railway Enquiry</p>
+                            </div>
+                        </div>
+                        <a href="tel:1092" class="call-button">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+
+                    <div class="helpline-card">
+                        <div class="helpline-info">
+                            <div class="helpline-icon cyber">
+                                <i class="fa-solid fa-user-secret"></i>
+                            </div>
+                            <div class="helpline-details">
+                                <h3>1930</h3>
+                                <p>Cyber Crime Helpline</p>
+                            </div>
+                        </div>
+                        <a href="tel:1930" class="call-button">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find My Band</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .fmb-card { background: #fff; padding: 28px; border-radius: 14px; box-shadow: 0 12px 35px rgba(0,0,0,0.08); width: 100%; }
+    .fmb-title { margin: 0 0 6px; font-size: 22px; font-weight: 700; }
+    .fmb-sub { margin: 0 0 16px; color: #6b7280; font-size: 14px; }
+    .fmb-btn { width: 100%; border: 0; border-radius: 10px; padding: 14px 16px; font-weight: 600; color: #fff; background: linear-gradient(135deg, #f73c50, #e02a3e); cursor: pointer; transition: transform .08s ease; }
+    .fmb-btn:disabled { opacity: .7; cursor: not-allowed; }
+    .fmb-meta { margin-top: 14px; font-size: 13px; color: #374151; display: flex; align-items: center; gap: 8px; }
+    .fmb-log { margin-top: 12px; background: #0b1220; color: #e5e7eb; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; border-radius: 10px; padding: 10px 12px; font-size: 12px; max-height: 160px; overflow: auto; }
+    .fmb-note { margin-top: 10px; font-size: 12px; color: #6b7280; }
+    .fmb-count { font-weight: 700; color: #111827; }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-section">
+          <div class="heart-icon">♥</div>
+          <span class="brand-name">Smartband+</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item">
+          <span class="nav-icon"><i class="fa-solid fa-house"></i></span>
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="analytics.html" class="nav-item">
+          <span class="nav-icon"><i class="fa-solid fa-chart-line"></i></span>
+          <span class="nav-text">Analytics</span>
+        </a>
+        <a href="thingspeak.html" class="nav-item">
+          <span class="nav-icon"><i class="fa-solid fa-cloud"></i></span>
+          <span class="nav-text">ThingSpeak</span>
+        </a>
+        <a href="find-my-band.html" class="nav-item active">
+          <span class="nav-icon"><i class="fa-solid fa-magnifying-glass-location"></i></span>
+          <span class="nav-text">Find My Band</span>
+        </a>
+        <a href="sos.html" class="nav-item">
+          <span class="nav-icon"><i class="fa-solid fa-exclamation-triangle"></i></span>
+          <span class="nav-text">SOS</span>
+        </a>
+        <a href="women-safety.html" class="nav-item">
+          <span class="nav-icon"><i class="fa-solid fa-user-shield"></i></span>
+          <span class="nav-text">Women Safety</span>
+        </a>
+        <a href="women-health.html" class="nav-item">
+          <span class="nav-icon"><i class="fa-solid fa-user-doctor"></i></span>
+          <span class="nav-text">Women Health</span>
+        </a>
+        <a href="crime-map.html" class="nav-item">
+          <span class="nav-icon"><i class="fa-solid fa-map-location-dot"></i></span>
+          <span class="nav-text">Crime Map</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="dashboard-header">
+        <h1>Find My Band</h1>
+        <div class="header-actions">
+          <button class="notification-btn"><i class="fa-solid fa-bell"></i></button>
+          <button class="profile-btn" onclick="window.location.href='profile.html'"><i class="fas fa-user"></i></button>
+          <button class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+      </header>
+
+      <div class="dashboard-grid">
+        <div class="chart-section">
+          <div class="fmb-card">
+            <h2 class="fmb-title"><i class="fa-solid fa-magnifying-glass-location"></i> Find My Band</h2>
+            <p class="fmb-sub">Press the button to trigger the band buzzer. It will auto-stop after 16 seconds.</p>
+
+            <button id="buzzBtn" class="fmb-btn">Buzz my band</button>
+            <div class="fmb-meta">
+              <i class="fa-regular fa-clock"></i>
+              Auto-reset: <span class="fmb-count" id="countdown">--</span> seconds
+            </div>
+
+            <div class="fmb-log" id="log"></div>
+            <div class="fmb-note">Channel: <b>2931414</b> • Field: <b id="fieldNo">1</b> • Using write key to trigger, auto-reset after 16 seconds.</div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // ThingSpeak config
+    const WRITE_API_KEY = 'REXGXHUD3G0CWGVX';
+    const READ_API_KEY = 'RZ9GNS62NC5PA9JT'; // if needed for verification
+    const CHANNEL_ID = '2931414';
+    const FIELD_NO = 1; // buzzer field (updated as requested)
+
+    const btn = document.getElementById('buzzBtn');
+    const logEl = document.getElementById('log');
+    const countdownEl = document.getElementById('countdown');
+
+    function log(msg) {
+      const time = new Date().toLocaleTimeString();
+      logEl.textContent += `[${time}] ${msg}\n`;
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+
+    async function writeField(value) {
+      const url = `https://api.thingspeak.com/update?api_key=${WRITE_API_KEY}&field${FIELD_NO}=${encodeURIComponent(value)}`;
+      log(`Request: ${url}`);
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`ThingSpeak update failed: ${res.status}`);
+      const text = await res.text();
+      log(`Response: ${text || '(empty)'}`);
+      return text;
+    }
+
+    function startCountdown(seconds, onFinish) {
+      let remaining = seconds;
+      countdownEl.textContent = remaining;
+      const iv = setInterval(() => {
+        remaining -= 1;
+        countdownEl.textContent = remaining >= 0 ? remaining : 0;
+        if (remaining < 0) {
+          clearInterval(iv);
+          onFinish && onFinish();
+        }
+      }, 1000);
+      return () => clearInterval(iv);
+    }
+
+    btn.addEventListener('click', async () => {
+      try {
+        btn.disabled = true;
+        btn.textContent = 'Activating...';
+        log(`Activating buzzer: setting field${FIELD_NO} = 1`);
+        await writeField(1);
+        btn.textContent = 'Buzzing...';
+
+        // Auto reset after 16 seconds
+        const stopTimer = startCountdown(16, null);
+        setTimeout(async () => {
+          try {
+            log(`Auto-reset: setting field${FIELD_NO} = 0`);
+            await writeField(0);
+            log('Buzzer stopped.');
+          } catch (e) {
+            log('Error while auto-resetting: ' + e.message);
+          } finally {
+            btn.disabled = false;
+            btn.textContent = 'Buzz my band';
+            countdownEl.textContent = '--';
+          }
+        }, 16000);
+      } catch (e) {
+        log('Activation failed: ' + (e.message || 'Unknown error'));
+        btn.disabled = false;
+        btn.textContent = 'Buzz my band';
+        countdownEl.textContent = '--';
+      }
+    });
+  </script>
+</body>
+</html>

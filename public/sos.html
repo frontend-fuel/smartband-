@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartband+ SOS</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-section">
+                    <div class="heart-icon">♥</div>
+                    <span class="brand-name">Smartband+</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-house"></i></span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="analytics.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-chart-line"></i></span>
+                    <span class="nav-text">Analytics</span>
+                </a>
+                <a href="thingspeak.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-cloud"></i></span>
+                    <span class="nav-text">ThingSpeak</span>
+                </a>
+                <a href="find-my-band.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-magnifying-glass-location"></i></span>
+                    <span class="nav-text">Find My Band</span>
+                </a>
+                <a href="sos.html" class="nav-item active">
+                    <span class="nav-icon"><i class="fa-solid fa-exclamation-triangle"></i></span>
+                    <span class="nav-text">SOS</span>
+                </a>
+                <a href="women-safety.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-user-shield"></i></span>
+                    <span class="nav-text">Women Safety</span>
+                </a>
+                <a href="women-health.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-user-doctor"></i></span>
+                    <span class="nav-text">Women Health</span>
+                </a>
+                <a href="crime-map.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-map-location-dot"></i></span>
+                    <span class="nav-text">Crime Map</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>SOS Emergency</h1>
+                <div class="header-actions">
+                    <button class="notification-btn"><i class="fa-solid fa-bell"></i></button>
+                    <button class="profile-btn" onclick="window.location.href='profile.html'"><i class="fas fa-user"></i></button>
+                    <button class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <!-- SMS Details Section -->
+                <div class="stats-row">
+                    <div class="stat-card sms-info-card">
+                        <div class="stat-icon sms-icon"><i class="fa-solid fa-sms"></i></div>
+                        <div class="stat-content">
+                            <h3>SMS Alert Details</h3>
+                            <div class="sms-details">
+                                <div class="sms-detail-item">
+                                    <span class="label">Emergency Contact:</span>
+                                    <span class="value">+91 9391502293</span>
+                                </div>
+                                <div class="sms-detail-item">
+                                    <span class="label">Sender Number:</span>
+                                    <span class="value">+1 567 347 1858</span>
+                                </div>
+                                <div class="sms-detail-item">
+                                    <span class="label">Message Format:</span>
+                                    <span class="value">SMARTBAND+ SOS Alert! Location: [GPS Link]</span>
+                                </div>
+                                <div class="sms-detail-item">
+                                    <span class="label">Max Messages:</span>
+                                    <span class="value">2 per SOS activation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card status-card">
+                        <div class="stat-icon status-icon"><i class="fa-solid fa-signal"></i></div>
+                        <div class="stat-content">
+                            <h3>SOS Status</h3>
+                            <div class="status-details">
+                                <div class="status-item">
+                                    <span class="status-label">Current State:</span>
+                                    <span class="status-value" id="sosStatus">Inactive</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-label">Messages Sent:</span>
+                                    <span class="status-value" id="messageCount">0</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-label">Last Alert:</span>
+                                    <span class="status-value" id="lastAlert">Never</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SOS Activation Section -->
+                <div class="chart-section">
+                    <div class="chart-container">
+                        <div class="sos-content">
+                            <div class="sos-button-container">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sos-section">
+                        <div class="person-illustration">
+                            <img src="dashboard-person-img.png" alt="Person with smartwatch" class="person-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="sos.js"></script>
+</body>
+</html>

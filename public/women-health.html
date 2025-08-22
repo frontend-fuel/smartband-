@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Health Helplines - Smartband+</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .health-content {
+            padding: 30px;
+            background: #f5f7fa;
+            min-height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+        
+        .health-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .health-header h1 {
+            color: #43a047;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .health-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .health-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .health-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .health-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .health-info {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+        
+        .health-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .pregnancy { background: #ff6b9d; }
+        .emergency { background: #f44336; }
+        .health { background: #43a047; }
+        .child { background: #ff9800; }
+        .mental { background: #9c27b0; }
+        .senior { background: #607d8b; }
+        .reproductive { background: #e91e63; }
+        .aids { background: #795548; }
+        .blood { background: #d32f2f; }
+        
+        .health-details h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .health-details p {
+            margin: 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .call-button {
+            background: #43a047;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        
+        .call-button:hover {
+            background: #388e3c;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-section">
+                    <div class="heart-icon">♥</div>
+                    <span class="brand-name">Smartband+</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-house"></i></span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="analytics.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-chart-line"></i></span>
+                    <span class="nav-text">Analytics</span>
+                </a>
+                <a href="thingspeak.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-cloud"></i></span>
+                    <span class="nav-text">ThingSpeak</span>
+                </a>
+                <a href="find-my-band.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-magnifying-glass-location"></i></span>
+                    <span class="nav-text">Find My Band</span>
+                </a>
+                <a href="sos.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-exclamation-triangle"></i></span>
+                    <span class="nav-text">SOS</span>
+                </a>
+                <a href="women-safety.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-user-shield"></i></span>
+                    <span class="nav-text">Women Safety</span>
+                </a>
+                <a href="women-health.html" class="nav-item active">
+                    <span class="nav-icon"><i class="fa-solid fa-user-doctor"></i></span>
+                    <span class="nav-text">Women Health</span>
+                </a>
+                <a href="crime-map.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-map-location-dot"></i></span>
+                    <span class="nav-text">Crime Map</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>Women Health Helplines</h1>
+                <div class="header-actions">
+                    <button class="notification-btn"><i class="fa-solid fa-bell"></i></button>
+                    <button class="profile-btn" onclick="window.location.href='profile.html'"><i class="fas fa-user"></i></button>
+                    <button class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </div>
+            </header>
+
+            <div class="health-content">
+                <div class="health-header">
+                    <h1>🏥 Women Health Helplines</h1>
+                    <p>Important numbers for women's health & medical care</p>
+                </div>
+
+                <div class="health-grid">
+                    <div class="health-card">
+                        <div class="health-info">
+                            <div class="health-icon pregnancy">
+                                <i class="fa-solid fa-baby"></i>
+                            </div>
+                            <div class="health-details">
+                                <h3>102</h3>
+                                <p>Pregnancy Medic</p>
+                            </div>
+                        </div>
+                        <a href="tel:102" class="call-button">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+
+                    <div class="health-card">
+                        <div class="health-info">
+                            <div class="health-icon emergency">
+                                <i class="fa-solid fa-truck-medical"></i>
+                            </div>
+                            <div class="health-details">
+                                <h3>108</h3>
+                                <p>Emergency Ambulance</p>
+                            </div>
+                        </div>
+                        <a href="tel:108" class="call-button">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+
+                    <div class="health-card">
+                        <div class="health-info">
+                            <div class="health-icon health">
+                                <i class="fa-solid fa-hospital"></i>
+                            </div>
+                            <div class="health-details">
+                                <h3>104</h3>
+                                <p>Health Helpline</p>
+                            </div>
+                        </div>
+                        <a href="tel:104" class="call-button">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+
+                    <div class="health-card">
+                        <div class="health-info">
+                            <div class="health-icon child">
+                                <i class="fa-solid fa-children"></i>
+                            </div>
+                            <div class="health-details">
+                                <h3>1098</h3>
+                                <p>Child Helpline</p>
+                            </div>
+                        </div>
+                        <a href="tel:1098" class="call-button">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+
+                    <div class="health-card">
+                        <div class="health-info">
+                            <div class="health-icon health">
+                                <i class="fa-solid fa-stethoscope"></i>
+                            </div>
+                            <div class="health-details">
+                                <h3>1075</h3>
+                                <p>National Health Helpline</p>
+                            </div>
+                        </div>
+                        <a href="tel:1075" class="call-button">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+
+                    <div class="health-card">
+                        <div class="health-info">
+                            <div class="health-icon senior">
+                                <i class="fa-solid fa-person-cane"></i>
+                            </div>
+                            <div class="health-details">
+                                <h3>14567</h3>
+                                <p>Senior Citizens Helpline</p>
+                            </div>
+                        </div>
+                        <a href="tel:14567" class="call-button">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+
+                    <div class="health-card">
+                        <div class="health-info">
+                            <div class="health-icon reproductive">
+                                <i class="fa-solid fa-person-pregnant"></i>
+                            </div>
+                            <div class="health-details">
+                                <h3>1800-180-5145</h3>
+                                <p>Reproductive & Child Health</p>
+                            </div>
+                        </div>
+                        <a href="tel:18001805145" class="call-button">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+
+                    <div class="health-card">
+                        <div class="health-info">
+                            <div class="health-icon mental">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+                            <div class="health-details">
+                                <h3>1800-180-5533</h3>
+                                <p>Mental Health Helpline (NIMHANS)</p>
+                            </div>
+                        </div>
+                        <a href="tel:18001805533" class="call-button">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+
+                    <div class="health-card">
+                        <div class="health-info">
+                            <div class="health-icon aids">
+                                <i class="fa-solid fa-ribbon"></i>
+                            </div>
+                            <div class="health-details">
+                                <h3>14443</h3>
+                                <p>AIDS / HIV Helpline</p>
+                            </div>
+                        </div>
+                        <a href="tel:14443" class="call-button">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+
+                    <div class="health-card">
+                        <div class="health-info">
+                            <div class="health-icon blood">
+                                <i class="fa-solid fa-droplet"></i>
+                            </div>
+                            <div class="health-details">
+                                <h3>1097</h3>
+                                <p>Blood Requirement Helpline</p>
+                            </div>
+                        </div>
+                        <a href="tel:1097" class="call-button">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartband+ Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-section">
+                    <div class="heart-icon">♥</div>
+                    <span class="brand-name">Smartband+</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">
+                    <span class="nav-icon"><i class="fa-solid fa-house"></i></span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="analytics.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-chart-line"></i></span>
+                    <span class="nav-text">Analytics</span>
+                </a>
+                <a href="thingspeak.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-cloud"></i></span>
+                    <span class="nav-text">ThingSpeak</span>
+                </a>
+                <a href="find-my-band.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-magnifying-glass-location"></i></span>
+                    <span class="nav-text">Find My Band</span>
+                </a>
+                <a href="sos.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-exclamation-triangle"></i></span>
+                    <span class="nav-text">SOS</span>
+                </a>
+                <a href="women-safety.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-user-shield"></i></span>
+                    <span class="nav-text">Women Safety</span>
+                </a>
+                <a href="women-health.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-user-doctor"></i></span>
+                    <span class="nav-text">Women Health</span>
+                </a>
+                <a href="crime-map.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-map-location-dot"></i></span>
+                    <span class="nav-text">Crime Map</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>Dashboard</h1>
+                <div class="header-actions">
+                    <button class="notification-btn"><i class="fa-solid fa-bell"></i></button>
+                    <button class="profile-btn" onclick="window.location.href='profile.html'"><i class="fas fa-user"></i></button>
+                    <button class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <!-- Stats Cards -->
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-icon location-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="stat-content">
+                            <h3>GPS Location</h3>
+                            <div class="stat-value">
+                                <div class="coordinates">--</div>
+                                <div class="coordinates secondary">--</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon temp-icon"><i class="fa-solid fa-thermometer-half"></i></div>
+                        <div class="stat-content">
+                            <h3>Body Temperature</h3>
+                            <div class="stat-value">
+                                <div class="body-temp">--</div>
+                                <div class="temp-unit">°F</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon pulse-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <div class="stat-content">
+                            <h3>Pulse Rate</h3>
+                            <div class="stat-value">
+                                <div class="pulse-rate">--</div>
+                                <div class="pulse-unit">BPM</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon air-icon"><i class="fa-solid fa-cloud"></i></div>
+                        <div class="stat-content">
+                            <h3>Air Quality</h3>
+                            <div class="stat-value">
+                                <div class="air-status">--</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GPS Map Section -->
+                <div class="chart-section">
+                    <div class="chart-container">
+                        <h3>GPS Location Map</h3>
+                        <div id="gpsMap" style="width: 100%; height: 400px; border-radius: 8px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; color: #6c757d;">
+                            <div style="text-align: center;">
+                                <i class="fa-solid fa-map-location-dot" style="font-size: 48px; margin-bottom: 10px; opacity: 0.5;"></i>
+                                <p>GPS Map will load here when location data is available</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sos-section">
+                        <div class="person-illustration">
+                            <img src="logo1.png" alt="Person with smartwatch" class="person-image">
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThingSpeak - Smartband+</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="thingspeak.css">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-section">
+                    <div class="heart-icon">♥</div>
+                    <span class="brand-name">Smartband+</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-house"></i></span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="analytics.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-chart-line"></i></span>
+                    <span class="nav-text">Analytics</span>
+                </a>
+                <a href="thingspeak.html" class="nav-item active">
+                    <span class="nav-icon"><i class="fa-solid fa-cloud"></i></span>
+                    <span class="nav-text">ThingSpeak</span>
+                </a>
+                <a href="find-my-band.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-magnifying-glass-location"></i></span>
+                    <span class="nav-text">Find My Band</span>
+                </a>
+                <a href="sos.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-exclamation-triangle"></i></span>
+                    <span class="nav-text">SOS</span>
+                </a>
+                <a href="women-safety.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-user-shield"></i></span>
+                    <span class="nav-text">Women Safety</span>
+                </a>
+                <a href="women-health.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-user-doctor"></i></span>
+                    <span class="nav-text">Women Health</span>
+                </a>
+                <a href="crime-map.html" class="nav-item">
+                    <span class="nav-icon"><i class="fa-solid fa-map-location-dot"></i></span>
+                    <span class="nav-text">Crime Map</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>ThingSpeak Integration</h1>
+                <div class="header-actions">
+                    <button class="notification-btn"><i class="fa-solid fa-bell"></i></button>
+                    <button class="profile-btn" onclick="window.location.href='profile.html'"><i class="fas fa-user"></i></button>
+                    <button class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </div>
+            </header>
+
+            <div class="thingspeak-content">
+                <!-- Configuration Section -->
+                <div class="config-section">
+                    <div class="section-header">
+                        <h2><i class="fa-solid fa-gear"></i> Configuration</h2>
+                        <button class="btn-primary" id="saveConfigBtn">Save Configuration</button>
+                    </div>
+                    
+                    <div class="config-simple">
+                        <div class="config-card">
+                            <h3>ThingSpeak Configuration</h3>
+                            <div class="form-group">
+                                <label for="channelId">Channel ID</label>
+                                <input type="text" id="channelId" value="3035518">
+                            </div>
+                            <div class="form-group">
+                                <label for="readApiKey">Read API Key</label>
+                                <input type="text" id="readApiKey" value="44R0NH1BCLTCZUC3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </main>
+    </div>
+
+    <script src="thingspeak.js"></script>
+</body>
+</html>
